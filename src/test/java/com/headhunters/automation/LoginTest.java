@@ -35,8 +35,7 @@ public class LoginTest {
 	  
   }
   
-  @Test 
- 
+  @Test (priority=1)
   public void testValidCredentials() {
 	  txtUserName.sendKeys("test1");
 	  txtPassword.sendKeys("test1");
@@ -50,7 +49,7 @@ public class LoginTest {
 	  assertEquals(webDriver.getCurrentUrl(),  URL+"/job-seeker-home");
   }
   
-  @Test
+  @Test (priority=2)
   public void testInvalidUserName() {
 	  txtUserName.sendKeys("test11");
 	  txtPassword.sendKeys("test1");
@@ -65,16 +64,12 @@ public class LoginTest {
   }
   
   
-  
-  
-  
-  
   @AfterTest
   public void closeBrowser() {
 	  txtUserName.clear();
 	  txtPassword.clear();
 	  
-	  webDriver.close();
+	  webDriver.quit();
   }
   
 }
